@@ -38,11 +38,11 @@ class sensu::repo::apt {
         'source' => $::sensu::repo_key_source,
       },
       before   => Package[$sensu::package::pkg_title],
-      notify   => Exec['apt-update'],
+      notify   => Exec['apt-update-sensu'],
     }
 
     exec {
-      'apt-update':
+      'apt-update-sensu':
         refreshonly => true,
         command     => '/usr/bin/apt-get update';
     }
